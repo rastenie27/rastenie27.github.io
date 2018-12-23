@@ -1,0 +1,22 @@
+main {
+    max-width: 1000px;
+    margin: auto; 
+}
+img {
+	max-width: 100%;
+	display: block;
+}
+.box {
+	columns: 4;
+	column-gap: 3px;
+}
+.item {
+	transition: 0.3s;
+}
+a {
+	display: block;
+	margin-bottom: 3px;
+}
+.item:hover {
+	filter: sepia(0.8);
+}
