@@ -17,6 +17,27 @@ a {
 	display: block;
 	margin-bottom: 3px;
 }
-.item:hover {
-	filter: sepia(0.8);
+@media all and (min-width: 1100px)
+{
+	.item {
+		filter: sepia(0);
+	}
+	.item:hover {
+		filter: sepia(1);
+	}
+}
+
+@media all and (max-width: 768px)
+{
+	.box {
+		columns: 2;
+
+	}
+}
+@media all and (max-width: 480px)
+{
+	.box {
+		columns: 1;
+	
+	}
 }
