@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name = 'viwport' cotent='with=device-width, initial-scale=1'>
+	<title>Menu</title>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper">
+		<nav>
+			<a href="#red" class="link">red</a>
+			<a href="#blue" class="link">blue</a>
+			<a href="#orange" class="link">orange</a>
+			<a href="#green" class="link">green</a>
+			<a href="#purple" class="link">purple</a>
+		</nav>
+	</div>
+	<div id="red"></div>	
+	<div id="blue"></div>		
+	<div id="orange"></div>
+	<div id="green"></div>
+	<div id="purple"></div>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> 
+  <script>
+  	$(document).ready(
+  		$('.link').on('click', function() {
+  			console.log(this);
+  			var href = $(this).attr('href');
+  			console.log(href);
+  			$('html, body').animate({scrollTop: $(href).offset().top}, 1500);
+  			return false;
+  		})
+  	)
+  </script>
+</body>
+</html>

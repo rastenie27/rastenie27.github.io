@@ -1,0 +1,61 @@
+body, html {
+	font-family: 'ZCOOL KuaiLe', cursive;
+	height: 100%;
+	margin: 0;
+}
+div {
+	height: 100%;
+}
+#red {
+	background-color: red;
+}
+#blue {
+	background-color: blue;
+}
+#orange {
+	background-color: orange;
+}
+#green {
+	background-color: green;
+}
+#purple {
+	background-color: purple;
+}
+.wrapper {
+	height: 80px;
+	position: fixed;
+	width: 100%; 
+	overflow: auto;
+	white-space: nowrap;
+}
+nav {
+	margin: auto;
+	max-width: 500px;
+	height: 100%;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	align-items: center;
+	justify-content: space-around;
+}
+.link {
+	color:#ffffff;
+	text-decoration: none;
+	font-size: 18px;
+	padding: 10px 15px;
+	outline:none; 
+	transition: 0.3s;
+	user-select:none;
+}
+.link:hover {
+	color: dodgerblue;
+	
+}
+.link:active {
+	color: ;
+}
+@media screen and  (min-width: 1200px) {
+	.link:hover {
+		color: lightblue;
+	}
+}
