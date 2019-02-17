@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>clicker</title>
+	<meta name="viewport" concert='width=device-width,initial-scale=1'>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<style>
+	body, html {
+		height: 100%;
+		margin: 0;
+		user-select: none;
+		overflow: hidden;
+		font-family: 'Roboto Slab', serif;	
+	}
+		#square {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			background-color: red;
+			transition: 0.1s;
+			z-index: 10;
+
+		}
+		#text {
+			z-index: 100;
+			height: 100%;
+			display: none;
+			position: absolute;
+			background-color: rgba(0,0,0,0.7);
+			color: white;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			-ms-align-items: center;
+			align-items: center;
+			font-size: 60px;
+			flex-direction: column;
+			text-shadow: 3px 3px 3px rgba(0,0,0,0.6);
+			text-align: center;
+		}
+
+		.circle {
+			border-radius: 50%;
+			
+		}
+		#count {
+			z-index: 1;
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			color: red;
+			font-size: 70px;
+			font-weight: bold;
+			text-shadow: 3px 3px 3px blue;
+		}
+
+		#newgame {
+			border: 2px solid white;
+			background: transparent;
+			color: white;
+			text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+			width: 95%;
+			max-width: 220px;
+			height: 50px;
+			font-size: 18px;
+			font-weight: bold;
+			margin-top: 30px;
+		}
+		#timer {
+			position: absolute;
+			right: 20px;
+			top: 0;
+			text-align: center;
+			color: red;
+			font-size: 70px;
+			font-weight: bold;
+			text-shadow: 3px 3px 3px blue;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="timer">1</div>
+	<div id="count">0</div>
+	<div id='square'></div>
+	<div id='text'>
+		<div class="m">ты победил :-)</div>
+		<button id="newgame">начать заново</button>
+	</div>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+  	var count = 0;
+  	var colors = ['lightblue', 'dodgerblue', 'tomato', 'darkgreen', 'pink', 'purple', 'orange', 'lime', 'navy', 'medium­slateblue', 'deeppink', 'goldenrod', 'lawngreen'];
+  	var width = $(document).width() - 200;
+ 	var height = $(document).height() - 200;
+ 	var timer = 5;
+
+ 	
+ 	
+ 	function setInter(){
+ 		$('#timer').text(timer);
+ 		var inter = setInterval(function() {
+ 		if (timer > 0) {
+ 			timer -= 1;
+ 			$('#timer').text(timer);
+ 			console.log(timer);
+ 		}
+ 		else {	
+ 			$('.m').text('GAME OVER');
+ 			$('#text').css('display', 'flex');
+ 			clearInterval(inter);
+ 		}
+ 	}, 1000);
+ 		return inter;
+
+ 	}
+ 	var  i = setInter();
+ 	
+
+ 	function randomPosition(el) {
+ 		var x = Math.floor(Math.random()*width)
+		var y = Math.floor(Math.random()*height)
+
+
+  		$(el).toggleClass('circle')
+  		$(el).css('background-color', colors[count%colors.length])
+  		$(el).css('top', y)
+		$(el).css('left', x)
+ 	}
+
+  	$('#square').on('click', function() {
+		randomPosition(this);
+		count += 1;
+		timer += 1;
+		$('#count').text(count)
+		$('#timer').text(timer);
+		
+  		if (count == 50) { 
+  			$('.m').text('winner winner chicken dinner!');
+  			$('#text').css('display', 'flex');
+  			clearInterval(i);
+  		}
+  	})
+  		
+  	$('#newgame').on('click', function() {
+  		count = 0;
+  		timer = 5;
+  		$('#count').text(count);
+  		$('#timer').text(timer);
+  		randomPosition('#square');
+  		$('#text').css('display', 'none');
+  		i = setInter();
+  	})
+  	
+  </script>
+</body>
+</html>
